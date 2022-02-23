@@ -1,0 +1,35 @@
+name: SonarQube Workflow
+
+on: pull_request
+  
+jobs:
+  runUnitTest:
+    name: Run Unit Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run Tests
+      run: |
+        pytest sample.py
+
+  #sonarQubeTrigger:
+    #name: SonarQube Trigger
+    #runs-on: ubuntu-latest
+    #steps:
+    #- uses: actions/checkout@v2
+    #- name: SonarQube Scan
+      #uses: kitabisa/sonarqube-action@master
+      #with:
+        #host: ${{ secrets.SONAR_HOST }}
+        #login: ${{ secrets.SONAR_TOKEN }}
