@@ -29,13 +29,13 @@ jobs:
       run: |
         pytest sample.py
 
-  #sonarQubeTrigger:
-    #name: SonarQube Trigger
-    #runs-on: ubuntu-latest
-    #steps:
-    #- uses: actions/checkout@v2
-    #- name: SonarQube Scan
-      #uses: kitabisa/sonarqube-action@master
-      #with:
-        #host: ${{ secrets.SONAR_HOST }}
-        #login: ${{ secrets.SONAR_TOKEN }}
+  sonarQubeTrigger:
+    name: SonarQube Trigger
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
+      with:
+        host: ${{ secrets.SONAR_HOST }}
+        login: ${{ secrets.SONAR_TOKEN }}
