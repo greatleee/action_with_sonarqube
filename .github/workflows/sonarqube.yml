@@ -9,7 +9,7 @@ on:
         default: "bossm0n5t3r"
   pull_request:
     branches:
-      - develop
+      - main
   
 jobs:
   runUnitTest:
