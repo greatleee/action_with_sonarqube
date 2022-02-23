@@ -45,10 +45,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage-report
-          path: coverage.xml
+          path: sonarqube/coverage.xml
       - uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: /home/runner/work/action_with_sonarqube/action_with_sonarqube/coverage.xml
+          projectBaseDir: sonarqube/ 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
