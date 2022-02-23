@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        pytest --junitxml=xunit-reports/xunit-result-pytest.xml sample.py
+        pytest --junitxml=pytest-report.xml sample.py
 
   sonarQubeTrigger:
     name: SonarQube Trigger
