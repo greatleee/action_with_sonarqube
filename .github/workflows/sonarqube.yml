@@ -27,12 +27,12 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        pytest --cov=. --cov-report=xml sample.py
+        pytest --cov=. --cov-report=xml:results/coverage.xml sample.py
     - name: Upload coverage report
       uses: actions/upload-artifact@v2
       with:
         name: coverage-report
-        path: ./coverage.xml
+        path: ./results
 
   sonarQubeTrigger:
     name: SonarQube Trigger
@@ -45,7 +45,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage-report
-          path: ./coverage.xml
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
