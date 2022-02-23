@@ -1,5 +1,5 @@
 def sample(x):
-    return x * 4
+    return x * 5
 
 def test_sample():
-    assert sample(4) == 16
+    assert sample(4) == 20
