@@ -31,8 +31,8 @@ jobs:
     - name: Upload coverage report
       uses: actions/upload-artifact@v2
       with:
-        name: Coverage report
-        path: ./coverage.xml
+        name: coverage-report
+        path: coverage.xml
 
   sonarQubeTrigger:
     name: SonarQube Trigger
@@ -44,11 +44,9 @@ jobs:
       - name: Download coverage report
         uses: actions/download-artifact@v2
         with:
-          name: Coverage report
+          name: coverage-report
           path: /github/workspace/coverage.xml
       - uses: sonarsource/sonarqube-scan-action@master
-        with:
-          projectBaseDir: 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
