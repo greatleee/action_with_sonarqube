@@ -45,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: Coverage report
-          path: ./coverage.xml
+          path: /github/workspace/coverage.xml
       - uses: sonarsource/sonarqube-scan-action@master
         with:
           projectBaseDir: 
