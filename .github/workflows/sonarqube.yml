@@ -45,10 +45,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: coverage-report
-          path: sonarqube/coverage.xml
+          path: coverage.xml
       - uses: sonarsource/sonarqube-scan-action@master
-        with:
-          projectBaseDir: sonarqube/ 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
